@@ -85,6 +85,23 @@ You'll see references to relevant content in the lecture footnotes.
 * / the path separator (\ on Windows) 
 * `ls /usr /etc` [note the space, this is two parameters so lists contents of usr and etc under /]
 
+### echo
+* echo used to print its parameters to the console 
+* `echo "Hello there"`
+* `echo "Hello" "there"` - can take >1 parameter 
+* `echo "Hello \"Tom\""` - escape quotes with \” 
+* `echo "Hello"; echo "There"` - ; separates commands 
+* `echo -n "Hello"; echo "There"` - `-n` means no newline 
+* `echo {1..10}` - {1..10} replaced with 10 parameters
+
+> Next is about ls  Globbing
+* `ls /bin/l*`  - list all files in /bin that start with l 
+* `ls /bin/*d`  - list all files that end with d 
+* `ls /bin/l?`  - list all that start with l, 2 letters long 
+* `ls /bin/??d` - list all 3 letters long, end with d 
+* The shell replaces the pattern you specify with the names of matching files, so ls can get passed multiple parameters  
+* `echo /bin/l?`- print file names that match pattern
+* More information can be obtained from [Bash Extended Globbing](https://www.linuxjournal.com/content/bash-extended-globbing)
 
 
 
