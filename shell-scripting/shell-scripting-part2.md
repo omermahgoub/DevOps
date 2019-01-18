@@ -172,7 +172,7 @@ EOF
 ### The * quantifier
 
 * This behaves differently to the `*` used in globbing
-* * means match any number of the character (or group, more on this later) that came before it
+* `*` means match any number of the character (or group, more on this later) that came before it
 * E.g. to match an "a" followed by one or more "b"s then an "a":
 ``` 
 grep -E "ab*a" <<EOF 
@@ -187,8 +187,8 @@ EOF
 
 ### The ? quantifier
 
-* This behaves differently to the ? used in globbing
-* `?` means match zero or one of the character that came before it (* is zero or any number) 
+* This behaves differently to the `?` used in globbing
+* `?` means match zero or one of the character that came before it (`*` is zero or any number) 
 * E.g. to match an "a" followed by zero or one "b"s then an "a": 
 ```
 grep -E "ab?a" <<EOF 
@@ -201,9 +201,9 @@ ab
 EOF
 ```
 
-### The + quantifier
+### The `+` quantifier
 
-* + matches one or more of the character that came before it 
+* `+` matches one or more of the character that came before it 
 * E.g. to match an "a" followed by one or more "b"s then an "a": 
 ```
 grep -E "ab+a" <<EOF 
@@ -218,7 +218,7 @@ EOF
 
 ### Specifying num of repeats {}
 
-* + matches one or more of the character that came before it 
+* `+` matches one or more of the character that came before it 
 * E.g. to match an "a" followed by one or more "b"s then an "a": 
 ```
 grep -E "ab+a" <<EOF 
