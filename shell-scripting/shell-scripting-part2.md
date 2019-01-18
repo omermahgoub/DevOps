@@ -172,7 +172,7 @@ EOF
 ### The * quantifier
 
 * This behaves differently to the `*` used in globbing
-* `*` means match any number of the character (or group, more on this later) that came before it
+* * means match any number of the character (or group, more on this later) that came before it
 * E.g. to match an "a" followed by one or more "b"s then an "a":
 ``` 
 grep -E "ab*a" <<EOF 
