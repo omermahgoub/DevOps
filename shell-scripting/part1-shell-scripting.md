@@ -29,14 +29,6 @@ You'll see references to relevant content in the lecture footnotes.
 * Files can be aliases for other files (links) 
 * How do we administer this from the shell? via commands as:
 
-### The File System (fs)
-* A file system is the way in which files are named, stored, retrieved as well as updated on a storage disk or partition; the way files are organized on the disk.
-* Linux system is nothing but Folders and files 
-* There's one root folder: / - not like Windows C:\, D:\, E:\ 
-* Programs are just files 
-* Files can be aliases for other files (links) 
-* How do we administer this from the shell? via commands
-
 ### ls - 1
 - list directory
 - ` ls [files ...]
@@ -152,7 +144,49 @@ You'll see references to relevant content in the lecture footnotes.
 * `tail /etc/passwd` - display last 10 (default) lines 
 * `tail -20 /etc/passwd` - last 20 lines
 
+### I/O redirection 1
 
+* Can take the output of a command and redirect to a file - output redirection  
+* `ls /etc > contents` - write output to file `contents`
+> Note: colouring lost - some commands detect they’re writing to console and add user-friendly formatting 
+* `ls /etc >> contents` -append output to file `contents`
+
+### /dev/null
+
+* /dev/null is a special file with nothing in it
+* `cat /dev/null` - nothing 
+* Even if you write data the the file it has nothing in it 
+* `cat /etc/password > /dev/null` - add some text to it 
+* `cat /dev/null` - still nothing 
+* Sometimes useful! - you can redirect the output of commands here if you don’t want to see it 
+* It’s like a bottomless hole for output you don’t want
+
+### I/O redirection 2
+
+* `ls /mmm > contents` - list non-existent dir.  
+* `contents` created but empty and error message printed to console 
+* Why printed to console when output redirected? 
+* Each process has two outputs: STDOUT and STDERR 
+* Can redirect them with 1>  for STDOUT and 2> for STDERR 
+* > shorthand for 1>, STDOUT 
+* `ls /mmm 1> contents 2> errmsgs `
+* Can redirect STDERR to same place as STDOUT 2>&1
+* `ls /mmm 1> alloutput 2>&1`
+
+### I/O redirection 3, wc
+
+* Can also redirect input with < 
+* `wc < /etc/passwd` - count lines, words, characters 
+in /etc/passwd 
+* Note: some tools e.g. `tr` don’t take a file as a  parameter, you can only redirect into it 
+* Unix tools typically support input and output streams first (via file descriptors), and support reading from file  by name as an extra convenience
+
+### sort, uniq, tar, gzip
+* sort is used to sort the elements of a file 
+* uniq is used to find the uniq elements from a sorted file 
+* tar is used to pack files into a single file 
+* gzip is used to compress files 
+* tar can also compress multiple files into a single file
 
 
 
