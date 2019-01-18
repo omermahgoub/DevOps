@@ -188,8 +188,123 @@ in /etc/passwd
 * gzip is used to compress files 
 * tar can also compress multiple files into a single file
 
+### grep 1
 
+* grep is used to search for text that matches a pattern 
+* `grep oo /etc/passwd` - prints lines that have "oo"
+* `grep -v oo /etc/passwd` - print lines that don’t  have "oo"
+* `grep -l root /etc/*` - print names of files with match 
+* `grep -l root /etc/* 2> /dev/null` - redirect error messages to /dev/null 
+* grep is a very powerful tool -  we’ll revisit later
 
+### find 1
 
+* find is used to find files that match certain criteria based on file name, modification time, permissions etc 
+* `find /etc -name "pa*"` - find all files starting with 'pa' in /etc and subdirectories under /etc
+* `find /etc -name "pa*" 2> /dev/null` - to suppress error messages [1] 
+> possible to prevent find from generating these messages in the first place with other switches
+* `find /etc -name "pa*" -type d 2> /dev/null` - to find only matching directories
 
+### Users, groups
 
+* Unix was designed from the start to be multi-user 
+* So need to be able to administer users too 
+* /etc/passwd lists all users, /etc/group all groups 
+* `useradd, usermod` - add, modify users
+> Non-standard tools, differs by OS and distribution. Won't be examined
+* `whoami` - tells you your username 
+* `id` - your username, groups, etc 
+* `who` - list logged in users
+
+### Processes, ps
+
+* Users run commands which spawn processes 
+* Need to be able to administer these 
+* `ps` - list your processes. Note you can see bash running - this is your shell 
+* `ps -uroot` - list processes for specific user (root here)  
+* `ps -ef` - list all users' processes 
+* Note each process has an id (PID) - used to control it
+
+### Digression: POSIX etc
+
+If you look at the man page for ps on a Linux system  you'll probably see that it supports 3 sets of options - Unix, BSD and Gnu Linux. There are many varieties of  Unix and Unix derivatives and each developed there own special switches for programs. The POSIX standard was developed to provide a common set of behaviour between Unix based systems. This makes code developed on one system more easily portable to others. You should aim to use POSIX features to increase the portability of your code and your skills.
+
+### kill
+
+* kill is used to give signals to processes 
+* There are several signals, but we'll usually just want to terminate a process 
+* `kill -9 PID` - replace PID with the pid of bash, kills bash immediately (sends KILL signal) 
+
+### Permissions 1
+
+* Need to protect the system from users, and users from each other 
+* Done with permissions and Access Control Lists (ACLs) 
+* Permissions most common 
+* You've seen them displayed already 
+* `ls -l /` - leftmost column 
+* E.g. `drwxr-xr-x`
+* Note files have an associated user (owner) and group
+
+* {-}  {rwx}  {r-x}  {r--}
+  type  user  group  other
+
+* The first character represents a type e.g. "d" for directory, "-" for file etc.
+>  The characters can also encode more information than we see here e.g. sticky bit, setuid, sockets.More info see [link1](https://docs.oracle.com/cd/E19683-01/816-4883/secfile-69/index.html), [link2](https://en.wikipedia.org/wiki/Unix_file_types)
+* Then there are 3 blocks of permissions 
+* `r` means can read, `w` can write, `x` can execute 
+* The first block describes what the owner is allowed do to the file, the second block what users who are members of the same group as the file are allowed do, and the third block describes what all other users are allowed do
+
+### chmod
+
+* chmod is used to modify file permissions 
+* u - user, g - group, o - other, a - all
+> ermissions can also be represented numerically, e.g. 666 for rw-rw-rw-. This is worth learning if you intend to use the shell a lot. See: [link](http://linuxcommand.org/lts0070.php)
+* `chmod o+w permstest` - let other users write to testperms 
+* `chmod u+x permstest` - let owner execute file 
+* `chmod a-w permtest`  - remove write permission from all users 
+* Be careful, possible to remove your permissions
+
+### chown, chgrp
+
+* chown - change the user that owns a file - need admin rights 
+* `chown someuser permtest` - change owner to someuser 
+* chgrp - change the group that owns a file - non-admins can only change to a group you're a member 
+* `chgrp dialout permtest` - change group to dialout
+
+### Chaining commands 1
+
+* Already seen you can separate commands with ; 
+* `ls -l`; `mkdir tmpdir`; `ls -l`; `rm -r tmpdir`; `ls -l`
+* In that case commands execute one after the other 
+* Sometimes you'd like to stop executing if one command fails 
+* Sometimes you'd like a second command to execute only if the first one failed 
+* How can we tell if a command failed?
+
+### exit codes
+
+* Each command returns an exit (or error or return) code (or status) 
+* `0 - 255` - 0 indicates success, anything else failure 
+* `echo $?` - display exit code of last command executed (even in case of chained commands) 
+* `ls -l /mmm; echo $?` - make ls fail, see exit code 
+* man pages for commands list the exit codes they generate, usually near the end.  
+* `man ls` - for example
+* Chain commands with && if you want commands to execute only if all before have succeeded 
+* `mkdir tmpdir && touch tmpdir/file && echo "Done"` - make a dir, a file in it, print "Done"
+* Chain commands with `||` if you want commands to execute only if preceding commands failed 
+* Useful for e.g. presenting an error message or exiting a script if things go wrong 
+* `mkdir /tmp || mkdir /etc || echo "Failed to make"` - fails to make /tmp so executes next command. 
+  Fails to make /etc so executes next command which prints failure message. 
+* `mkdir /tmp || mkdir mytmp || echo "Failed to make"` - fails to make /tmp, succeeds making mytmp so doesn't execute next command.
+
+### Background processes
+* If you have a long running process you may want to keep working while it runs. To do this, you can tell the shell to run it in the background, by adding an & 
+* `ping -i 1 localhost` - keep pinging localhost. (ctrl-c to kill it) 
+* `ping -i 1 localhost & ` - do it in the background. (type fg, return, ctrl-c to kill it) 
+* `ping -i 1 localhost > output &` - redirect output too (file keeps getting bigger).  
+* Notice the numbers printed. The first is a job id and the second is the process id (pid).
+* jobs lists jobs running in background 
+* `jobs` - lists by job id 
+* `fg` makes the most recent job from the background into the foreground. From here you can kill it with ctrl-c 
+* `fg %jobid` - to move a specific job to foreground  
+* Can also stop it with `kill %jobid `
+* Can move a foreground job to the background with ctrl-z, then typing `bg`
