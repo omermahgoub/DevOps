@@ -103,6 +103,57 @@ You'll see references to relevant content in the lecture footnotes.
 * `echo /bin/l?`- print file names that match pattern
 * More information can be obtained from [Bash Extended Globbing](https://www.linuxjournal.com/content/bash-extended-globbing)
 
+### touch
+* `touch` lets you update the access and last modification  time of a file to current time (default)
+* If file doesn’t exist will create an empty file (default)
+* See man page for non-default actions 
+* `touch playlist.txt`
+* `touch list1 list2 list3`
+
+### cp, mv, rm
+* cp copies files from one location to another 
+  - `cp playlist.txt playlist2.txt` - copy 
+  - `cp -R onedir targetdir` - `-R` copies recursively 
+* mv moves files from one location to another 
+  - `mv srcdir targetdir` - no need for `-R `
+* rm remove (unlink) files 
+  - `rm playlist.txt` - remove playlist.txt 
+  - `rm -r targetdir` - `-R` to remove recursively 
+
+> `ls` - Globbing 2
+* Can limit match to a set of characters 
+* `touch doc0 doc1 doc11 docA Doc9`
+* `ls doc[0-9]` - files with doc followed by a digit 
+* `ls doc[0-9]` - files with doc followed by a digit 
+* `ls [dD]oc[0-9]` - files with d or D, then oc, then a digit 
+* `ls doc[0-9A-Z]` - files with doc then a digit or capital 
+* `ls doc[0-9][0-9]` - files with doc followed by two digits
+
+### cd
+* `cd` changes working directory 
+* `cd /etc` - change working dir to /etc 
+* `cd ~` - change to home dir (default on login) 
+* `cd ~/..` - change to parent of home dir 
+* `cd -` - change back to last dir [1]
+
+### cat
+* cat displays the contents of files 
+* `cat /etc/passwd` - display contents /etc/passwd 
+* `cat /etc/passwd` - number each line 
+* `cat ~/.bash_history` - display command history
+
+### head
+* head displays first lines of files 
+* `head /etc/passwd` - display first 10 (default) lines 
+* `head -20 /etc/passwd` - first 20 lines
+
+### tail
+* tail displays last lines of files 
+* `tail /etc/passwd` - display last 10 (default) lines 
+* `tail -20 /etc/passwd` - last 20 lines
+
+
+
 
 
 
