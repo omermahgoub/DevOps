@@ -1,6 +1,6 @@
 # Scripting for System Administration
 
-## Part 1 - Shell Scripting, Lecture 1
+## Shell Scripting, Part 1
 
 I'll try to cover as much details of shell scripting as possible. Although there's plenty of free information if you want to learn more by yourself. 
 
@@ -37,7 +37,7 @@ You'll see references to relevant content in the lecture footnotes.
 * Files can be aliases for other files (links) 
 * How do we administer this from the shell? via commands
 
-### ls
+### ls - 1
 - list directory
 - ` ls [files ...]
 - directories and files (and others) all called files
@@ -70,7 +70,7 @@ You'll see references to relevant content in the lecture footnotes.
 * pwd prints the current working directory (which is like the folder the shell is ‘in’) 
 * `pwd`
 
-### ls (continue)
+### ls - 2
 * `"."` refers to the current directory 
 * `ls .`
 * `".."` refers to the parent directory, up a level 
@@ -94,7 +94,7 @@ You'll see references to relevant content in the lecture footnotes.
 * `echo -n "Hello"; echo "There"` - `-n` means no newline 
 * `echo {1..10}` - {1..10} replaced with 10 parameters
 
-> Next is about ls  Globbing
+### ls - 3 globbing
 * `ls /bin/l*`  - list all files in /bin that start with l 
 * `ls /bin/*d`  - list all files that end with d 
 * `ls /bin/l?`  - list all that start with l, 2 letters long 
@@ -120,7 +120,7 @@ You'll see references to relevant content in the lecture footnotes.
   - `rm playlist.txt` - remove playlist.txt 
   - `rm -r targetdir` - `-R` to remove recursively 
 
-> `ls` - Globbing 2
+### ls - 4 Globbing
 * Can limit match to a set of characters 
 * `touch doc0 doc1 doc11 docA Doc9`
 * `ls doc[0-9]` - files with doc followed by a digit 
