@@ -111,19 +111,24 @@ Solution: break it down
 
 ### Heredocs 1
 * A heredoc is way to pass multiple lines of data from the command line into the STDIN of a program, just as if it was redirected from a file 
-* ```wc << EOF 
+
+```wc << EOF 
 It was the best of times,
 it was the worst of times 
 EOF
 ```
+
 * EOF can be anything you want, marks start and end.
 * Variable expansions happen as usual 
+
 ```
 cat << EOF 
 Your home directory is ${HOME}
 EOF
 ```
+
 * If you don't want expansion to happen, single quote opening marker 
+
 ```
 cat << 'EOF'
 Your home directory is ${HOME}
