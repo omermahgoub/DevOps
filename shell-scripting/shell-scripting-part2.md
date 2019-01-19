@@ -226,6 +226,19 @@ EOF
 * {m} matches exactly m of the character that came before it
 * {m,} matches m or more of the character that came before it
 * {,n} matches 0 to n of the character that came before it
+
+* E.g. to match an "a" followed by 2 to 2 ‘b’ between a and a character
+```
+grep -E "ab{2,3}a" <<EOF 
+rabbar 
+abba 
+yabbadabadoo 
+babar 
+yaay 
+babbb 
+EOF
+```
+
 * E.g. to match an "a" followed by exactly two "b"s then an "a": 
 ```
 grep -E "ab{2}a" <<EOF 
