@@ -373,11 +373,10 @@ EOF
 * It matches ones without a "." because "." in a regex matches everything 
 * We need to tell it we mean to match only an actual "."
 * You 'escape' special characters by putting a \ before them 
+* E.g. to match an email address we might try: 
+
 ```
-E.g. to match 
-an email address we might try: 
-grep -E "[a-zA-Z0-9]+@[a-zA-Z0-9]+(\
-.[a-zA-Z0-9])+" <<EOF 
+grep -E "[a-zA-Z0-9]+@[a-zA-Z0-9]+(.[a-zA-Z0-9])+" <<EOF 
 keith@somewhere.com 
 keith@somewhere.co.uk 
 info@a.co.jp 
