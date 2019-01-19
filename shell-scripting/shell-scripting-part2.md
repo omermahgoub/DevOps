@@ -356,9 +356,11 @@ EOF
 ### Escaping metacharacters \ 
 
 * What happens if we want to include one of the special characters in a pattern?
-* E.g. to match 
+> http://www.gnu.org/software/grep/manual/html_node/The-Backslash-Character-and-Special-Expressions.html#The-Backslash-Character-and-Special-Expressions
+
+* E.g. to match an email address we might try: 
+
 ```
-an email address we might try: 
 grep -E "[a-zA-Z0-9]+@[a-zA-Z0-9]+(.[a-zA-Z0-9])+" <<EOF 
 keith@somewhere.com 
 keith@somewhere.co.uk 
