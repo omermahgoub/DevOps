@@ -222,21 +222,6 @@ EOF
 
 ### Specifying num of repeats {}
 
-* `+` matches one or more of the character that came before it 
-* E.g. to match an "a" followed by one or more "b"s then an "a": 
-```
-grep -E "ab+a" <<EOF 
-babar 
-abba 
-yabbadabadoo 
-yaay 
-babbb 
-ab 
-EOF
-```
-
-### Specifying num of repeats {}
-
 * {m,n} matches n to m of the character that came before it 
 * {m} matches exactly m of the character that came before it
 * {m,} matches m or more of the character that came before it
