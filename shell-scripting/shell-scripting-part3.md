@@ -104,8 +104,7 @@ EOF
 * Command line arguments visible to all users
 * Let's see this in action: 
 ```
-cat > insecure
-.sh <<'EOF' 
+cat > insecure.sh <<'EOF' 
 #!/bin/bash 
 sleep 60 
 EOF
