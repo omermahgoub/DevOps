@@ -1,0 +1,24 @@
+#Further Reading
+
+* References - https://docs.python.org/3.5/index.html
+* The Python Tutorial - https://docs.python.org/3.5/tutorial/index.html
+* A Byte of Python - https://www.gitbook.com/book/swaroopch/ byte-of-python/details - but beware, only recently converted to Python 3, may have mistakes
+* Learn Python The Hard Way - http:// learnpythonthehardway.org/
+* The Hitchhiker’s Guide to Python! - http://docs.python-guide.org/ en/latest/
+* Video courses - Udacity, Coursera, edX
+
+## Setting Python up
+* yum, brew, or apt-get install python3 python-pip pip install package_name
+* System or local store of packages
+* virtualenv - lets you keep separate stores of packages for different projects, helps avoid depency conflicts
+
+##Python 3
+* Python 3 language introduced in 2008, not strictly
+* backwards compatible with Python 2 libraries
+* The changes are small, but breaking
+* Python 2 supported until 2020
+* Some libraries not ported to Python 3 yet
+* Careful, lots of code online is for Python 2
+  * print "some thing %s" % var - Python 2 
+  * print("some thing", var) - Python 3
+
