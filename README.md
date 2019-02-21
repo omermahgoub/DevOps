@@ -8,5 +8,6 @@ Complete guide on shell scripting, from noob to master.
 * New update is coming
 
 Complete guide on python scripting, from noob to master
-[Python Scripting](https://github.com/omermahgoub/DevOps/tree/master/python)
-* [1. Python Basics](https://github.com/omermahgoub/DevOps/blob/master/python/1.%20Python%20Basics.md)
+[Python Scripting](python/)
+* [1. Python Basics](python/python_basics_part1.md)
+* [2. Python Basics](python/python_basics_part2.md)

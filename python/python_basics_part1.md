@@ -1,15 +1,17 @@
 # Further Reading
 
 * References - https://docs.python.org/3.5/index.html
-* The Python Tutorial - https://docs.python.org/3.5/tutorial/index.html
-* A Byte of Python - https://www.gitbook.com/book/swaroopch/ byte-of-python/details - but beware, only recently converted to Python 3, may have mistakes
-* Learn Python The Hard Way - http:// learnpythonthehardway.org/
-* The Hitchhiker’s Guide to Python! - http://docs.python-guide.org/ en/latest/
-* Video courses - Udacity, Coursera, edX
+* The Python Tutorial - https://docs.python.org/3/tutorial/index.html
+* A Byte of Python - https://python.swaroopch.com/ 
+* Learn Python The Hard Way - http://learnpythonthehardway.org/
+* The Hitchhiker’s Guide to Python! - http://docs.python-guide.org/en/latest/
 
 ## Setting Python up
 
-* yum, brew, or apt-get install python3 python-pip pip install package_name
+* yum, brew, or apt-get install python3 python-pip
+
+  `apt-get install python3 python3-pip` 
+* pip install package_name
 * System or local store of packages
 * virtualenv - lets you keep separate stores of packages for different projects, helps avoid depency conflicts
 
@@ -21,16 +23,26 @@
 * Python 2 supported until 2020
 * Some libraries not ported to Python 3 yet
 * Careful, lots of code online is for Python 2
-  * print "some thing %s" % var - Python 2 
-  * print("some thing", var) - Python 3
+  * `print "some thing %s" % var` - Python 2 
+  * `print("some thing", var)` - Python 3
 
 ### Python REPL
 
-* REPL - Read Eval Print Loop •7+6
+* REPL - Read Eval Print Loop 
+* `7+6`
 * `python3`
 * `7+3`
-* Interprets what we type and prints it until we quit Ctrl - D (EOF) to quit
+* Interprets what we type and prints it until we quit `Ctrl - D` (EOF) to quit
 * `Ctrl - D` (EOF) to quit
+
+### Start python console
+```python
+ohamad@OmarBox:~$ python3
+Python 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+```
 
 ### Numerical operations
 
@@ -59,7 +71,7 @@
 ### Variables
 
 * Used to store literals and results of expressions
-* `a = 7` - a a variable, 7 a literal
+* `a=7` - `a` is a variable, 7 a literal
 * `b=6`
 * `a + b` - a + b an expression, result not stored anywhere
 * `c=a+b` 
@@ -103,13 +115,13 @@
 
 ### Quoting
 
-* How do we print the " character?
-* Choice of quotes ' or ", if need to print one use the other
+* How do we print the `"` character?
+* Choice of quotes `'` or `"`, if need to print one use the other
 * `print("'")`
 * `print('"')`
-* If need to print both, escape with `\`
+* If need to print both, escape with \
 * Or use `"""`, also for multiline strings
-* `print('He said "It\'s Tom\'s"')`
+
 ```
 print("""He said "It's Tom's".
 She replied, "It is in my hat\"""")
